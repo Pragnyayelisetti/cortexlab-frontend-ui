@@ -2639,3 +2639,38 @@ input[type="checkbox"]{
   width:auto !important;
   height:auto !important;
 }
+
+.training-mode-container{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-bottom:24px;
+}
+
+.mode-card{
+  border:2px solid #e5e7eb;
+  border-radius:12px;
+  padding:20px;
+  cursor:pointer;
+  transition:all .3s ease;
+  background:white;
+}
+
+.mode-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+.mode-card.active{
+  border-color:#2563eb;
+  background:#eff6ff;
+}
+
+.mode-card h4{
+  margin-bottom:8px;
+}
+
+.mode-card p{
+  color:#666;
+  font-size:14px;
+}

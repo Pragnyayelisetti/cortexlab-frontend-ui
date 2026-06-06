@@ -17,6 +17,7 @@ export default function Train() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [trainingMode, setTrainingMode] = useState('scratch');
 
   const [config, setConfig] = useState({
     project_name: projectNameParam || '',
@@ -131,7 +132,45 @@ export default function Train() {
           </div>
 
       </div>
+        <div className="section-header">
+          Training Mode
+        </div>
+
+        <div className="training-mode-container">
+        <div
+          className={`mode-card ${trainingMode === 'scratch' ? 'active' : ''}`}
+          onClick={() => setTrainingMode('scratch')}
+        >
+        <h4>Train From Scratch</h4>
+        <p>Create and train a completely new model.</p>
+      </div>
+
+      <div
+        className={`mode-card ${trainingMode === 'pretrained' ? 'active' : ''}`}
+        onClick={() => setTrainingMode('pretrained')}
+      >
+      <h4>Use Pre-trained Model</h4>
+      <p>Start from an existing model and fine-tune it.</p>
+    </div>
+  </div>
         <form onSubmit={handleSubmit}>
+          {trainingMode === 'pretrained' && (
+          <>
+          <div className="section-header">
+            Select Model
+          </div>
+
+          <div className="form-group">
+            <label>Pre-trained Model</label>
+
+            <select>
+              <option>YOLOv8 Small</option>
+              <option>YOLOv8 Medium</option>
+              <option>YOLOv8 Large</option>
+            </select>
+          </div>
+        </>
+      )}
           <div className="section-header">
             📁 Dataset Settings
           </div>
